@@ -9,14 +9,14 @@ function createWindow() {
     width: 960,
     height: 600,
   });
-  mainWindow.loadFile('./public/index.html');
+  // mainWindow.loadFile('./public/index.html');
+  // console.log(isDev);
 
-  // if (isDev) {
-  //   // mainWindow.loadURL('http://localhost:3000/');
-  //   mainWindow.loadFile('./public/index.html');
-  // } else {
-  //   mainWindow.loadFile(path.join(__dirname, '../build/index.html'));
-  // }
+  if (isDev) {
+    mainWindow.loadURL('http://localhost:3000/');
+  } else {
+    mainWindow.loadFile(path.join(__dirname, '../build/index.html'));
+  }
 
   mainWindow.webContents.openDevTools();
   mainWindow.on('closed', function() {
