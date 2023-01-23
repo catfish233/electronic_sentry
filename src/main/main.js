@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
 
@@ -19,6 +19,8 @@ function createWindow() {
   }
 
   mainWindow.webContents.openDevTools();
+  require('../components/menu.js'); // 顶部菜单自定义修改
+
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
@@ -34,4 +36,18 @@ app.on('activate', function() {
   if (mainWindow === null) {
     createWindow();
   }
+})
+
+ipcMain.on('openRender', (event, avg) => {
+  let renderWindow = null;
+  const {width, height} = avg
+  renderWindow = new BrowserWindow({
+      width,
+      height,
+      webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false
+      }
+  })
+  renderWindow.webContents.loadURL('http://localhost:3000/Recognition')
 })
