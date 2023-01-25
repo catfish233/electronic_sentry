@@ -1,5 +1,5 @@
-import Management from './renderer/Management.tsx';
-import Recognition from './renderer/Recognition.tsx';
+import Management from './pages/Management.tsx';
+import Recognition from './pages/Recognition.tsx';
 
 // 路由管理
 const routes = [

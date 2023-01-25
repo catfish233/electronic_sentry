@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from '../styles/Recognition.module.scss';
 
 export default function Recognition(): JSX.Element {
   const initVideoSteam = async () => {
@@ -25,7 +26,7 @@ export default function Recognition(): JSX.Element {
   }, [])
 
   return (
-    <div>
+    <div className={styles.recognition}>
       <h3>实时摄像头界面</h3>
       <video autoPlay></video>
     </div>
