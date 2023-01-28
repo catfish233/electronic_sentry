@@ -1,7 +1,6 @@
-import './App.css';
-
 import {Route, Routes, Link, HashRouter} from 'react-router-dom';
 import routes from './route.js';
+import './App.css';
 
 function App() {
   return (
@@ -9,7 +8,6 @@ function App() {
       <div className="App">
         <h1>首页</h1>
         <Link to = '/Management'>Management</Link>
-        
         <br/>
         <Link to = '/Recognition'>Recognition</Link>
         <Routes>

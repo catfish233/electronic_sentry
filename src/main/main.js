@@ -2,7 +2,19 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
 
+const { exec } = require('child_process');
+
 let mainWindow;
+
+// 调用python文件
+const runPyFile = () => {
+  exec('python src/py/hello.py', function(error, stdout, stderr){
+    if(error){
+      console.info(error);
+    }
+    console.log('exec: ' + stdout);
+  })
+}
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -20,6 +32,7 @@ function createWindow() {
 
   mainWindow.webContents.openDevTools();
   require('../components/menu.js'); // 顶部菜单自定义修改
+  runPyFile();
 
   mainWindow.on('closed', function() {
     mainWindow = null;
