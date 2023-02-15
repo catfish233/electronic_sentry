@@ -21,7 +21,7 @@ export default function Management(): JSX.Element {
   }
 
   useEffect(() => {
-    getIpIfon('113.113.1.2');
+    getIpIfon('120.77.253.207');
   }, [])
 
   return (
