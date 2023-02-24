@@ -1,4 +1,15 @@
 const { Menu, BrowserWindow } = require('electron');
+const { exec } = require('child_process');
+
+// 调用python文件
+const runPyFile = () => {
+  exec('python src/py/hello.py', function(error, stdout, stderr){
+    if(error){
+      console.info(error);
+    }
+    console.log('exec: ' + stdout);
+  })
+}
 
 // 顶部菜单自定义修改
 let template = [
@@ -14,7 +25,8 @@ let template = [
               height:500,
               webPreferences:{ nodeIntegration:true}
           })
-          win.loadFile('yellow.html')
+          // win.loadFile('yellow.html')
+          runPyFile();
           win.on('closed',()=>{
               win = {};
           })

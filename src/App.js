@@ -6,7 +6,7 @@ function App() {
   return (
     <HashRouter>
       <div className="App">
-        <h1>首页</h1>
+        <h1>无感电子哨兵系统</h1>
         <Link to = '/Management'>Management</Link>
         <br/>
         <Link to = '/Recognition'>Recognition</Link>

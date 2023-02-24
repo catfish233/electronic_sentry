@@ -18,8 +18,10 @@ const runPyFile = () => {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 960,
+    width: 1080,
     height: 600,
+    // frame: false; // 无边框窗口设置
+    icon: path.join(__dirname, '../source/logo.png'), // 图标 
   });
   // mainWindow.loadFile('./public/index.html');
   // console.log(isDev);
@@ -32,7 +34,7 @@ function createWindow() {
 
   mainWindow.webContents.openDevTools();
   require('../components/menu.js'); // 顶部菜单自定义修改
-  runPyFile();
+  // runPyFile();
 
   mainWindow.on('closed', function() {
     mainWindow = null;

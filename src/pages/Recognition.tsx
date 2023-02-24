@@ -39,8 +39,6 @@ export default function Recognition(): JSX.Element {
     initVideoSteam();
   }, [])
 
-
-
   return (
     <div className={styles.recognition}>
       <div>
@@ -57,7 +55,9 @@ export default function Recognition(): JSX.Element {
       <Button onClick={() => {
         getUserData();
         message.warning('您点击了我们的提示信息')
-      }}>点击模拟检测到人脸</Button>
+      }}>
+        点击模拟检测到人脸
+      </Button>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function Management(): JSX.Element {
       <br />
       <Button onClick={() => message.warning('您点击了我们的提示信息')}>点击提示</Button>
       <Link to = '/Recognition'>Recognition</Link>
-      <p>{ipInfo?.Country + ipInfo?.City}</p>
+      <p>{(ipInfo?.Country + ipInfo?.City) || ''}</p>
       <p>{getMsg|| ''}</p>
     </div>
   );
