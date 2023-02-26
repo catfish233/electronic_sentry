@@ -20,12 +20,19 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1080,
     height: 600,
+    backgroundColor: '#113a5c',
     // frame: false; // 无边框窗口设置
-    icon: path.join(__dirname, '../source/logo.png'), // 图标 
+    icon: path.join(__dirname, '../source/logo.png'), // 图标
+    // titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: '#2f3241',
+      symbolColor: '#74b1be',
+      // height: 60,
+    }
   });
   // mainWindow.loadFile('./public/index.html');
   // console.log(isDev);
-
+ 
   if (isDev) {
     mainWindow.loadURL('http://localhost:3000/');
   } else {
