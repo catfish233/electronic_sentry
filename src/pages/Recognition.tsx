@@ -62,13 +62,11 @@ export default function Recognition(): JSX.Element {
       <Time />
       <div className={styles.recognition}>
         <div className={styles.recognition_container}>
-          <span>实时摄像头界面</span>
-          {/* <div > */}
-            <video  className={styles.video} autoPlay></video>
-          {/* </div> */}
+          <div>实时摄像头界面</div>
+          <video  className={styles.video} autoPlay></video>
         </div>
         <div className={styles.data_list}>
-          <span>检测人员</span>
+          <div className={styles.list_title}>检测人员名单</div>
           {/* {userData} */}
         </div>
       </div>

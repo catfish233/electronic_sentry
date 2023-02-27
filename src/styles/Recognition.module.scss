@@ -1,14 +1,11 @@
 .top_container {
   padding: 20px 10px;
-  // height: 100%;
-  // width: 100%;
 }
 
 .recognition {
   display: flex;
   justify-content: center;
   color: #f1efef;
-  background-color: #4a4a46;
   height: 100%;
 }
 
@@ -16,10 +13,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: #000000;
   width: 80%;
-  padding: 20px;
+  padding: 10px 20px;
+  margin-right: 20px;
+  border: 1px solid #e5e5e5d5;
+  border-radius: 5px;
 
   > span {
     padding-bottom: 10px 0;
@@ -27,15 +27,19 @@
 }
 
 .video {
-  // width: 400px;
-  // height: 300px;
-  width: fit-content;
-  height: fit-content;
+  width: 80%;
+  height: 80%;
 }
 
 .data_list {
-  height: 100%;
   width: 20%;
   background-color: #fdfdfd;
   color: #000000;
+  border: 1px solid #e5e5e5d5;
+  border-radius: 5px;
+}
+
+.list_title {
+  border-bottom: 1px solid #e5e5e5d5;
+  padding: 5px;
 }
