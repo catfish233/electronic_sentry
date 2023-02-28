@@ -20,7 +20,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1080,
     height: 600,
-    backgroundColor: '#113a5c',
+    backgroundColor: '#6e767c',
     // frame: false; // 无边框窗口设置
     icon: path.join(__dirname, '../source/logo.png'), // 图标
     // titleBarStyle: 'hidden',

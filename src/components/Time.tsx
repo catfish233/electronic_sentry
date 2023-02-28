@@ -18,14 +18,13 @@ export default function Time(): JSX.Element {
 
   useEffect(() => {
     moment.locale('zh-cn');
-    console.log(moment.locale());
   }, [])
 
   return (
     <div className={styles.time_container}>
       <div className={styles.time_title}>当前时间: </div>
       <div className={styles.oClock}>
-        {moment().format('HH:mm:ss')  }
+        {moment().format('HH:mm:ss')}
       </div>
       <div className={styles.day}>
         {moment().format("LL")}

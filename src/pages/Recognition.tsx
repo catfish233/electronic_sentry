@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
-import { Button, message } from "antd";
+import { Button, Avatar, List, Space } from "antd";
 import Time from "../components/Time";
-
+import { dataURItoBlob } from "../utils/saveImg";
+import UserDataItem from "../components/UserDataItem";
 import styles from '../styles/Recognition.module.scss';
 
 type UserData = [
   {
     nucleinInfo?: {
-        nucleinResult?: "检测中" | "24小时" | "48小时" | "72小时" | "无数据",
-        healthCode?: "green" | "red" | "yellow",
-        vaccination?: "未接种" | "全程接种" | "接种一针" | "接种两针",
+      nucleinResult?: "检测中" | "24小时" | "48小时" | "72小时" | "无数据",
+      healthCode?: "green" | "red" | "yellow",
+      vaccination?: "未接种" | "全程接种" | "接种一针" | "接种两针",
     },
     id?: string,
     name?: string,
@@ -20,11 +21,14 @@ type UserData = [
 ];
 
 export default function Recognition(): JSX.Element {
-  const [userData, SetUserData] = useState<UserData>();
+  const [userData, SetUserData] = useState<UserData>([{}]);
+  const videoRef = useRef<any>(null);
+  const canvasRef = useRef<any>(null);
 
+  // 初始化视频流
   const initVideoSteam = async () => {
     try {
-      const oVideo = document.querySelector('video');
+      const oVideo = videoRef.current;
       const initSteam = await navigator.mediaDevices.getUserMedia({
         video: {
           width: 800,
@@ -40,12 +44,26 @@ export default function Recognition(): JSX.Element {
       console.error(error);
     }
   }
+
+  // 获取截图
+  const getFaceImage = () => {
+    const canvas = canvasRef.current;
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(videoRef.current, 0, 0, 800, 600, 0, 0, 200, 150);
+
+    const imgData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    const imgBlob = dataURItoBlob(imgData);
+    // todo: 将获取的blob对象传递给python
+  }
+
   // 获取人脸信息
   const getUserData = async () => {
     try {
-      const res = await axios.get(`http://47.113.226.94:3050/`);
+      // const res = await axios.get(`http://47.113.226.94:3050/`); // 线上版本
+      const res = await axios.get(`http://localhost:3050/`);
       if (res) {
         SetUserData(res.data)
+        console.log(res.data);
       }
     } catch (e) {
       console.error(e);
@@ -59,15 +77,41 @@ export default function Recognition(): JSX.Element {
 
   return (
     <div className={styles.top_container}>
-      <Time />
+      <div className={styles.header_container}>
+        <Time />
+        <div className={styles.face_img}>
+          <canvas id="canvas" ref={canvasRef} ></canvas>
+          <Button onClick={() => getFaceImage()}>截图</Button>
+          <Button onClick={() => getUserData()}>获取人脸信息</Button>
+        </div>
+      </div>
       <div className={styles.recognition}>
         <div className={styles.recognition_container}>
           <div>实时摄像头界面</div>
-          <video  className={styles.video} autoPlay></video>
+          <video  className={styles.video} autoPlay ref={videoRef}></video>
         </div>
         <div className={styles.data_list}>
           <div className={styles.list_title}>检测人员名单</div>
-          {/* {userData} */}
+          {/* {userData.map((item) => {
+            return <UserDataItem userDataItem={item} />
+          })} */}
+
+          <List
+            itemLayout="vertical"
+            // size="large"
+            size="small"
+            pagination={{
+              onChange: (page) => {
+                console.log(page);
+              },
+              pageSize: 6,
+            }}
+            dataSource={userData}
+            renderItem={(item) => (
+              <UserDataItem userDataItem={item} />
+            )}
+          >
+          </List>
         </div>
       </div>
     </div>

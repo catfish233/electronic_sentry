@@ -6,10 +6,6 @@ function App() {
   return (
     <HashRouter>
       <div className="App">
-        {/* <p>无感电子哨兵系统</p> */}
-        {/* <Link to = '/Management'>Management</Link>
-        <br/>
-        <Link to = '/Recognition'>Recognition</Link> */}
         <Routes>
           {
             routes.map((item, key) => {

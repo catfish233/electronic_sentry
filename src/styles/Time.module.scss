@@ -7,6 +7,9 @@
   margin-bottom: 20px;
   background-color: rgba(234, 234, 234, 0.5);
   padding: 5px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .time_title {

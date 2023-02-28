@@ -2,7 +2,8 @@
   text-align: center;
   width: 100vw;
   height: 100vh;
-  background-color: #113a5c;
+  overflow: hidden;
+  background-color: #6e767c;
 }
 
 .App-logo {
