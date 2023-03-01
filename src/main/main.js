@@ -18,8 +18,8 @@ const runPyFile = () => {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1080,
-    height: 600,
+    width: 1200,
+    height: 800,
     backgroundColor: '#6e767c',
     // frame: false; // 无边框窗口设置
     icon: path.join(__dirname, '../source/logo.png'), // 图标
