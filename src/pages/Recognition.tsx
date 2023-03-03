@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
-import { Button, Avatar, List, Space } from "antd";
+import { Button, Avatar, List, Space, Table } from "antd";
 import Time from "../components/Time";
 import { dataURItoBlob } from "../utils/saveImg";
-import UserDataItem from "../components/UserDataItem";
 import styles from '../styles/Recognition.module.scss';
+import UserDataTable from "../components/UserDataTable";
+import { changeKeyName } from "../utils/changeKeyName";
 
 type UserData = [
   {
@@ -90,29 +91,7 @@ export default function Recognition(): JSX.Element {
           <div>实时摄像头界面</div>
           <video  className={styles.video} autoPlay ref={videoRef}></video>
         </div>
-        <div className={styles.data_list}>
-          <div className={styles.list_title}>检测人员名单</div>
-          {/* {userData.map((item) => {
-            return <UserDataItem userDataItem={item} />
-          })} */}
-
-          <List
-            itemLayout="vertical"
-            // size="large"
-            size="small"
-            pagination={{
-              onChange: (page) => {
-                console.log(page);
-              },
-              pageSize: 6,
-            }}
-            dataSource={userData}
-            renderItem={(item) => (
-              <UserDataItem userDataItem={item} />
-            )}
-          >
-          </List>
-        </div>
+        <UserDataTable className={styles.data_table} userData={changeKeyName(userData, 'key','id')} />
       </div>
     </div>
   );
