@@ -4,12 +4,26 @@
 
 .header_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  div {
+    margin-right: 10px;
+  }
+}
+
+.face_img_container {
+  margin-bottom: 20px;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .face_img {
-  // margin-bottom: 20px;
+  background-color: rgba(234, 234, 234, 0.5);
+  border: 1px solid #e5e5e5d5;
+  border-radius: 5px;
+  margin-right: 10px;
 }
+
 
 .recognition {
   display: flex;

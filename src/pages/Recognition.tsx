@@ -80,10 +80,9 @@ export default function Recognition(): JSX.Element {
     <div className={styles.top_container}>
       <div className={styles.header_container}>
         <Time />
-        <div className={styles.face_img}>
-          <canvas id="canvas" ref={canvasRef} ></canvas>
-          <Button onClick={() => getFaceImage()}>截图</Button>
-          <Button onClick={() => getUserData()}>获取人脸信息</Button>
+        <div className={styles.face_img_container}>
+          <canvas width="200" height="150" className={styles.face_img} ref={canvasRef}></canvas>
+          <Button className={styles.face_img_button} onClick={() => getFaceImage()}>截图</Button>
         </div>
       </div>
       <div className={styles.recognition}>

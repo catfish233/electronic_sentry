@@ -16,6 +16,23 @@ const runPyFile = () => {
   })
 }
 
+function sendToPython() {
+  const input = {value: 12};
+  var python = require('child_process').spawn('python', ['src/py/hello.py', input.value]);
+  python.stdout.on('data', function (data) {
+    console.log("Python response: ", data.toString('utf8'));
+    // result.textContent = data.toString('utf8');
+  });
+ 
+  python.stderr.on('data', (data) => {
+    console.error(`stderr: ${data}`);
+  });
+ 
+  python.on('close', (code) => {
+    console.log(`child process exited with code ${code}`);
+  });
+}
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
@@ -42,6 +59,7 @@ function createWindow() {
   mainWindow.webContents.openDevTools();
   require('../components/menu.js'); // 顶部菜单自定义修改
   // runPyFile();
+  sendToPython();
 
   mainWindow.on('closed', function() {
     mainWindow = null;
