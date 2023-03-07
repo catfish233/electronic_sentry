@@ -39,7 +39,7 @@ function createWindow() {
     height: 800,
     backgroundColor: '#6e767c',
     // frame: false; // 无边框窗口设置
-    icon: path.join(__dirname, 'src/source/logo.png'), // 图标
+    icon: path.join(__dirname, 'public/source/logo.png'), // 图标
     // titleBarStyle: 'hidden',
     titleBarOverlay: {
       color: '#2f3241',
@@ -52,10 +52,10 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:3000/');
     mainWindow.webContents.openDevTools(); // 开发者模式
   } else {
-    mainWindow.loadFile(path.join(__dirname, './public/index.html')); // 
+    mainWindow.loadFile(path.join(__dirname, 'build/index.html')); // 
   }
   
-  require('./src/components/menu.js'); // 顶部菜单自定义修改
+  require('./menu.js'); // 顶部菜单自定义修改
   // runPyFile();
   sendToPython();
 

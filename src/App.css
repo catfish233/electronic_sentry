@@ -4,7 +4,7 @@
   height: 100vh;
   overflow: hidden;
   /* background-color: #6e767c; */
-  background-image: url('../src/source/background.jpg');
+  background-image: url('../public/source/background.jpg');
   background-size: 100% 100%;
 }
 

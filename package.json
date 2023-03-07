@@ -2,7 +2,9 @@
   "name": "electronic_sentry",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "author": "Ronghaojie",
+  "description": "electronic sentry",
+  "main": "./main.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -26,7 +28,33 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "ebuildm": "electron-builder -m",
+    "ebuildw": "electron-builder --win --x64",
     "dev": "concurrently \"wait-on http://localhost:3000 && electron .\" \"cross-env BROWSER=none npm start\""
+  },
+  "build": {
+    "appId": "electronic_sentry",
+    "productName": "electronic_sentry",
+    "copyright": "GPL 3.0",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "nsis": {
+      "oneClick": false,
+      "language": "2052",
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "win": {
+    "icon": "public/moss.ico",
+      "target": "nsis"
+    },
+    "files": [
+      "build/**/*",
+      "./main.js"
+    ],
+    "extends": null
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +78,10 @@
     "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "electron": "^22.0.0",
-    "wait-on": "^7.0.1"
+    "wait-on": "^7.0.1",
+    "electron-builder": "^23.6.0"
   }
 }
+
+
+
