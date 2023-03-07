@@ -51,6 +51,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools(); // 开发者模式
   } else {
     mainWindow.loadFile(path.join(__dirname, 'build/index.html')); // 
+    mainWindow.webContents.openDevTools(); // 开发者模式
   }
   
   // require('./menu.js'); // 顶部菜单自定义修改
