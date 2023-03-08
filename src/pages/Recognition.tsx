@@ -48,6 +48,7 @@ export default function Recognition(): JSX.Element {
 
   // 获取截图
   const getFaceImage = () => {
+    // getUserData(); // 获取人脸信息
     const canvas = canvasRef.current;
     let ctx = canvas.getContext("2d");
     ctx.drawImage(videoRef.current, 0, 0, 800, 600, 0, 0, 200, 150);
@@ -61,7 +62,7 @@ export default function Recognition(): JSX.Element {
   const getUserData = async () => {
     try {
       // const res = await axios.get(`http://47.113.226.94:3050/`); // 线上版本
-      const res = await axios.get(`http://localhost:3050/`);
+      const res = await axios.get(`http://localhost:3050/?faceInfo=5fe9c963-93d5-4e03-8309-70be1f46abff`);
       if (res) {
         SetUserData(res.data)
         console.log(res.data);
