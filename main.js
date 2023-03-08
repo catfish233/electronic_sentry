@@ -50,8 +50,7 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:3000/');
     mainWindow.webContents.openDevTools(); // 开发者模式
   } else {
-    mainWindow.loadFile(path.join(__dirname, 'build/index.html')); // 
-    mainWindow.webContents.openDevTools(); // 开发者模式
+    mainWindow.loadFile(path.join(__dirname, 'build/index.html'));
   }
   
   // require('./menu.js'); // 顶部菜单自定义修改
