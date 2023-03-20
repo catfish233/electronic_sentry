@@ -43,7 +43,13 @@ function createWindow() {
     titleBarOverlay: {
       color: '#2f3241',
       symbolColor: '#74b1be',
-    }
+    },
+    // 在渲染进程中使用node, 需要要配置webPreferences属性
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      contextIsolation: false,
+  }
   });
 
   if (isDev) {
